@@ -5,18 +5,22 @@ import sys
 import matplotlib.pyplot as plt
 from PIL import Image
 
+#if packages are needed use command $pip3 install <package>
+#Example: pip3 install pandas
+
 n_skip_rows = 5   #accumulative number of rows to skip
 user_file = sys.argv[1]
 user_ID = user_file[5:12]
 
 def create_plot(skip_rows):
-    # print(skip_rows)
+    print(skip_rows)
     cols = list(pd.read_csv(user_file, skiprows=skip_rows, nrows=1))
     stimuli = cols[0].replace(" Time","")
-    # print(stimuli)
+    print(stimuli)
 
-    if stimuli == "Answer" or stimuli == "Comments":
+    if stimuli == "Answer" or stimuli == "Comment":
         return stimuli
+    print(stimuli)
 
     #transpose set of rows and delete empty entries
     data = pd.read_csv(user_file, skiprows=skip_rows, nrows=4, index_col = False, usecols =[i for i in cols if "Time" not in i]).T
