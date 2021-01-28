@@ -55,14 +55,12 @@ def create_plot(skip_rows):
 img_list = []
 
 while True:
-    if n_skip_rows > 60:
-        break
 
     returned_value = create_plot(n_skip_rows)
 
     if returned_value == "Answer":
         n_skip_rows += 2
-    elif returned_value == "Comments":
+    elif returned_value == "Comment":
         break
     else:
         img_list.append(returned_value)
